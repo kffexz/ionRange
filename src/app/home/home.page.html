@@ -1,7 +1,7 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
     <ion-title>
-      Blank
+      Uso do Range
     </ion-title>
   </ion-toolbar>
 </ion-header>
@@ -14,7 +14,16 @@
   </ion-header>
 
   <div id="container">
-    <strong>Ready to create an app?</strong>
-    <p>Start with Ionic <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a></p>
+    
+    <ion-range (ionChange)="onIonChange($event)"></ion-range>
+    
+    <ion-range (ionChange)="onIonChange($event)" [ticks]="true" [snaps]="true" [min]="0" [max]="10"></ion-range>
+
+    <ion-range (ionChange)="onIonChange($event)">
+      <ion-icon slot="start" name="remove-circle-outline"></ion-icon>
+      <ion-icon slot="end" name="add-circle-outline"></ion-icon>
+    </ion-range>
+
+    <ion-label>{{valorRange}}</ion-label>
   </div>
 </ion-content>
