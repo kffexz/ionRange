@@ -9,21 +9,92 @@
 <ion-content [fullscreen]="true">
   <ion-header collapse="condense">
     <ion-toolbar>
-      <ion-title size="large">Blank</ion-title>
+      <ion-title size="large">Uso do Range</ion-title>
     </ion-toolbar>
   </ion-header>
 
   <div id="container">
-    
-    <ion-range (ionChange)="onIonChange($event)"></ion-range>
-    
-    <ion-range (ionChange)="onIonChange($event)" [ticks]="true" [snaps]="true" [min]="0" [max]="10"></ion-range>
 
-    <ion-range (ionChange)="onIonChange($event)">
-      <ion-icon slot="start" name="remove-circle-outline"></ion-icon>
-      <ion-icon slot="end" name="add-circle-outline"></ion-icon>
-    </ion-range>
+    <!-- EXERCICIO 1 -->
 
-    <ion-label>{{valorRange}}</ion-label>
-  </div>
-</ion-content>
+    <ion-toolbar>
+      <ion-title>
+        Exercício 1
+      </ion-title>
+    </ion-toolbar>
+
+    <ion-item>
+      <ion-input type="number" placeholder="Insira o valor da conta" [(ngModel)]="conta"></ion-input>
+      </ion-item>
+
+    <ion-item>  
+    <ion-label>Insira a porcentagem da gorjeta</ion-label>
+    <ion-range (ionChange)="onIonChange($event)" [min]="0" [max]="30"></ion-range>
+    <ion-label>{{valorRange}}%</ion-label> </ion-item>
+
+    <ion-button expand="block" (click)="calcularContaFinal()"> Calcular valor final</ion-button>
+
+    <br>
+    <ion-label>Valor final: R${{valorFinal}}</ion-label>
+    <hr><hr><hr>
+    <!-- EXERCÍCIO 2 -->
+    <ion-toolbar>
+      <ion-title>
+        Exercício 2
+      </ion-title>
+    </ion-toolbar>
+    <hr>
+    <hr>
+    <ion-label>Insira um valor em metros para ser convertido
+    <ion-range (ionChange)="onIonChange($event)" [min]="0" [max]="10000"></ion-range>
+    <ion-label>{{valorRange}}m</ion-label>
+    <hr>  
+
+    <ion-radio-group value="km"[(ngModel)]="escolha">
+
+      <ion-item>
+      <ion-label>Quilometros</ion-label>
+      <ion-radio value="km" slot="start"></ion-radio>
+      </ion-item>
+  
+      <ion-item>
+      <ion-label>Milhas</ion-label>
+      <ion-radio value="mil" slot="start"></ion-radio>
+      </ion-item>
+  
+      <ion-item>
+        <ion-label>Pés</ion-label>
+        <ion-radio value="pes" slot="start"></ion-radio>
+      </ion-item>
+    </ion-radio-group>
+
+    <ion-button expand="block" (click)="converterDistancia()"> Converter</ion-button>
+
+    <br>
+    <ion-label>{{mensagem}}</ion-label>
+
+    <hr><hr><hr>
+    <!-- EXERCÍCIO 3 -->
+    <ion-toolbar>
+      <ion-title>
+        Exercício 3
+      </ion-title>
+    </ion-toolbar>
+    <hr>
+    <hr>
+
+    <ion-label>Insira a sua altura em metros (m)
+      <ion-range [(ngModel)]="altura" (ionChange)="onIonChange($event)" [step]="0.01" [min]="0" [max]="5"></ion-range>
+      <ion-label>{{altura}} m</ion-label>
+  <hr>
+      <ion-label>Insira o seu peso em quilogramas (Kg)
+        <ion-range [(ngModel)]="peso" (ionChange)="onIonChange($event)" [min]="0" [max]="500"></ion-range>
+        <ion-label>{{peso}} Kg</ion-label>
+
+    <ion-button
+      expand="block"
+      (click)="classificar()">
+      Ver sua classificação de IMC
+    </ion-button>
+  
+    <ion-label>{{class}}</ion-label>
