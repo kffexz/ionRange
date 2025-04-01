@@ -50,8 +50,6 @@ export class HomePage {
   imc=0;
   altura2=0;
 
-  alertButtons = ["OK"];
-
   classificar(){
 
     this.altura2 = this.altura*this.altura;
